@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<header>
+  <app-header></app-header>
+</header>
+
+<body>
+  <div id="title" class="cont-title">
+    <div class="cont-title-header ">
+      <p class="parragraph-responsive">SAVED QUERIES</p>
+    </div>
+  </div>
+  <div #container class="tableProv-container">
+    <table>
+      <thead>
+      <tr>
+        <th>Query Name</th>
+        <th>Owner User</th>
+        <th>Description</th>
+        <th>Visualize</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of queries | paginate: { itemsPerPage: elementeForPage, currentPage: currentPage}">
+        <td>{{ item.queryName }}</td>
+        <td>{{ item.user }}</td>
+        <td>{{ item.description }}</td>
+        <td>
+          <button class="button-view" (click)="showQuery(item)"><i class="fas fa-eye"></i></button>
+        </td>
+      </tr>
+      </tbody>
+
+    </table>
+    <pagination-controls (pageChange)="currentPage = $event" *ngIf="queries.length > elementeForPage"></pagination-controls>
+  </div>
+</body>
+<br>
+<br>
+<br>
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+</html>
+
+
+
+
+
+
+
+
+

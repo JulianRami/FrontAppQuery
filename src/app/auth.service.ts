@@ -1,11 +1,11 @@
 import {Injectable} from "@angular/core";
 import {UserModel} from "./login/user.model";
 import {HttpClient} from "@angular/common/http";
-/*import {CookieService} from "ngx-cookie-service";*/
+import {CookieService} from "ngx-cookie-service";
 import {QueryModel} from "./my-queries/query.model";
-/*import {QuerySavedModel} from "./users-queries/query-saved.model";
+import {CommentsModel} from "./view-query/comments.model";
 import {SearchDataModel} from "./view-query/search-data.model";
-import {CommentsModel} from "./view-query/comments.model";*/
+import {QuerySavedModel} from "./users-queries/query-saved.model";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class AuthService {
   formDataUser: UserModel = new UserModel();
   formDataQuery: QueryModel = new QueryModel();
 
-  constructor(private http: HttpClient, /*public cookiesService: CookieService*/) {
+  constructor(private http: HttpClient, public cookiesService: CookieService) {
   }
 
   postUser(formDataUser: UserModel) {
@@ -34,7 +34,7 @@ export class AuthService {
   getQueries() {
     return this.http.get<QueryModel[]>(`${this.apiUrl}/queries`);
   }
-/*
+
   postQuerySaved(querySave:QuerySavedModel) {
     return this.http.post(`${this.apiUrl}/queries-save/save-query`, querySave);
   }
@@ -86,5 +86,5 @@ export class AuthService {
 
   postQuery(query: QueryModel) {
     return this.http.post(`${this.apiUrl}/queries`, query);
-  }*/
+  }
 }

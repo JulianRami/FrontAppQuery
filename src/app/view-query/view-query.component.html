@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <app-header></app-header>
+</header>
+<body>
+<h1>Visual Query</h1>
+<div class="filter-bar">
+  <input type="text" placeholder="Enter a term" [(ngModel)]="searchTerm">
+
+  <select [(ngModel)]="selectedCountry">
+    <option value="Select a country" selected >Select a country</option>
+    <option *ngFor="let country of countries" [value]="country.name.common">{{ country.name.common }}</option>
+  </select>
+
+  <input type="date" id="dateInput" [(ngModel)]="selectedDate" name="selectedDate" required>
+
+  <select id="numberSelect" [(ngModel)]="selectedNumber" name="selectedNumber">
+    <option value="0" selected disabled>Select the number of records</option>
+    <option *ngFor="let number of numbers" [value]="number">{{ number }}</option>
+  </select>
+
+  <button (click)="applySearch()">
+    <i class="fa fa-search"></i>
+  </button>
+</div>
+
+<div class="main-content">
+  <div class="container-graphics">
+    <div class="graph-container">
+      <h2>Table Term vs Score </h2>
+      <app-graphic-score-term></app-graphic-score-term>
+    </div>
+    <div class="graph-container">
+      <h2>Table Term vs Rank</h2>
+      <app-graphic-rank-term></app-graphic-rank-term>
+    </div>
+  </div>
+  <div class="container-graphics">
+    <div class="graph-container">
+      <h2>Table Country and Term vs Rank</h2>
+      <app-graphic-country-term-rank
+        [multi]="dataSetOne"
+        [xAxisLabel]="'Term'"
+        [yAxisLabel]="'Rank'"
+        [legendTitle]="'Country'"></app-graphic-country-term-rank>
+    </div>
+    <div class="graph-container">
+      <h2>Table Country and Term vs Score</h2>
+      <app-graphic-country-term-rank
+        [multi]="dataSetTwo"
+        [xAxisLabel]="'Term'"
+        [yAxisLabel]="'Score'"
+        [legendTitle]="'Country'">
+      </app-graphic-country-term-rank>
+    </div>
+  </div>
+  <div class="container-graphics">
+    <div class="graph-container">
+      <h2>Table Date and Term vs Rank</h2>
+      <app-graphic-country-term-rank
+        [multi]="dataSetThree"
+        [xAxisLabel]="'Term'"
+        [yAxisLabel]="'Rank'"
+        [legendTitle]="'Date'"></app-graphic-country-term-rank>
+    </div>
+    <div class="graph-container">
+      <h2>Table Date and Term vs Score</h2>
+      <app-graphic-country-term-rank
+        [multi]="dataSetFour"
+        [xAxisLabel]="'Term'"
+        [yAxisLabel]="'Score'"
+        [legendTitle]="'Date'">
+      </app-graphic-country-term-rank>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showAddCommentSection">
+  <div class="comment-section">
+    <h2>Comments</h2>
+    <div class="comment-section">
+      <div class="comment" *ngFor="let comment of comments">
+        <div class="user">{{ comment.user }}:</div>
+        <div class="text">{{ comment.commentText }}</div>
+      </div>
+    </div>
+
+    <div class="comment-form">
+      <label class="user" for="comment">Haz un comentario:</label>
+      <textarea class="text" id="comment" placeholder="Escribe tu comentario" [(ngModel)]="commentSend"></textarea>
+
+      <button (click)="addComment()">Agregar Comentario</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showAddQuerySection">
+  <div class="comment-section">
+    <h2>Save Query</h2>
+      <label for="nameQuery">Name Query:</label>
+      <input type="text" id="nameQuery" required [(ngModel)]="nameQuery">
+
+      <label for="comment">Comment:</label>
+      <textarea id="commentt" [(ngModel)]="commentSave"></textarea>
+
+      <button (click)="saveQuery()" type="submit">Guardar Consulta</button>
+
+  </div>
+</div>
+
+<footer>
+  <app-footer></app-footer>
+</footer>
+</body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,161 @@
+/* Styles for HTML and Body */
+html {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+  display: contents;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Variable Definitions */
+:root {
+  --background-purple: #EEEEEE;
+  --subtle-white: #f9f9f9;
+  --subtle-grey: #f2f2f2;
+  --masked-grey: #ffffff;
+  --blue: #F03861;
+  --open-sans: 'Open Sans', sans-serif;
+}
+
+/* Styles for Table Container */
+.tableProv-container {
+  position: static;
+  margin: 2%;
+  top: 35px;
+  right: 0;
+  background-color: #EEEEEE;
+  border: 5px solid #ffffff;
+  padding: 10px;
+  max-height: 82vh;
+  overflow: auto; /* Enable scrolling if content is too long */
+  /* Set a default width for larger screens */
+}
+
+/* Styles for input of type "number" */
+input[type="number"] {
+  border: none; /* Remove border */
+  background-color: transparent; /* Remove background */
+  outline: none; /* Remove focus outline */
+}
+
+/* Styles for the Table */
+table {
+  width: 100%; /* 100% width for the table */
+  border-collapse: collapse;
+  border: 1px solid #ccc; /* Table border */
+  text-align: center;
+  font-family: sans-serif;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center; /* Center text in cells */
+  border: 1px solid #ccc; /* Cell border */
+  white-space: nowrap; /* Prevent content from breaking into multiple lines */
+  overflow: hidden; /* Hide content that overflows the cell */
+  text-overflow: ellipsis; /* Show ellipsis (...) for hidden content */
+}
+
+/* Styles for odd rows in the table */
+tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* Background color for odd rows */
+}
+/* Styles for Table Header (thead) */
+thead {
+  font-family: sans-serif;
+  background-color: #3E7C95; /* Background color for column names */
+}
+
+/* Styles for Table Header Cells (th) */
+th {
+  color: #FFFFFF;
+  font-size: 16px;
+  text-align: center;
+  font-family: sans-serif;
+  font-style: normal;
+}
+
+/* Styles for Buttons */
+button {
+  font-family: sans-serif;
+  margin-top: 2%;
+  padding: 10px 20px;
+  background-color: #f64339; /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ea170c; /* Change background color on hover */
+}
+
+/* Styles for View Buttons */
+.button-view {
+  font-family: sans-serif;
+  margin-top: 2%;
+  padding: 10px 20px;
+  background-color: rgb(0 0 0 / 64%); /* Button background color */
+  color: #fff; /* Button text color */
+  border: none;
+  cursor: pointer;
+}
+
+.button-view:hover {
+  background-color: rgb(0 0 0 / 76%); /* Change background color on hover */
+}
+
+/* Styles for Navigation Buttons on Hover */
+.button-nav:hover {
+  background-color: #3a7537; /* Change to a lighter tone on hover */
+  border-color: #ffffff; /* Change border color on hover */
+  color: #ffffff; /* Change text color on hover */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  .title,
+  .search-input,
+  .filter-select,
+  .search-button {
+    width: 100%;
+    margin-bottom: 10px; /* Space between elements */
+  }
+}
+/* Styles for Container Title Header */
+.cont-title-header {
+  background-color: #3E7C95; /* Background color for the container title header */
+}
+
+/* Styles for Responsive Paragraph */
+.parragraph-responsive {
+  font-size: 2.5vw; /* Font size adjusts to 4% of the window width */
+  text-align: center;
+  color: white;
+}
+
+/* Styles for Container Title with Form Group and Padding */
+.cont-title.form-group.p-5 {
+  width: 82%; /* Set the width of the container title with form group and padding */
+  float: right; /* Float the container to the right */
+}
+
+/* Styles for General Container Title */
+.cont-title {
+  background-color: #3E7C95; /* Background color for the general container title */
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  margin: 2%;
+}
+

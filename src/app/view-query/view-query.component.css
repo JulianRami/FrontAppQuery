@@ -1,0 +1,210 @@
+/**
+ * Styles for the container holding graphics.
+ */
+.container-graphics {
+  display: flex;
+  justify-content: space-around; /* or use "space-between" for more space between the divs */
+  margin-bottom: 20px; /* Adjust as needed */
+  margin: 0%;
+}
+
+/**
+ * Styles for individual graphic containers.
+ */
+.graph-container {
+  width: 48%; /* Adjust as needed, make sure to leave space for margin and space between divs */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc; /* Add a border for visualization */
+  text-align: center;
+}
+
+/**
+ * Base style for the filter bar.
+ */
+.filter-bar {
+  font-size: 15px;
+  display: flex;
+  font-family: "sans-serif";
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/**
+ * Increase the size of the text search input field.
+ */
+.filter-bar input[type="text"] {
+  margin: 5px;
+  font-family: "sans-serif";
+  padding: 5px; /* Increase padding to make it larger */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  flex: 2; /* Make it occupy more space than the selectors */
+  max-width: 100%;
+  font-size: 15px;
+}
+
+/**
+ * Reduce the size of the selectors (dropdowns).
+ */
+.filter-bar select {
+  margin: 5px;
+  font-family: "sans-serif";
+  padding: 5px; /* Reduce padding to make it smaller */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  flex: 1; /* Occupy less space than the text search input */
+  max-width: 100%;
+  font-size: 15px;
+}
+
+/**
+ * Button styles for the filter bar.
+ */
+.filter-bar button {
+  background-color: #316335;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  font-family: "sans-serif";
+  font-size: 16px;
+  border-radius: 3px;
+  transition: background-color 0.3s;
+}
+
+/* Change in button background color on hover for the filter bar */
+.filter-bar button:hover {
+  background-color: #6FA535;
+}
+
+/* Style for Font Awesome icons in the select dropdowns */
+.filter-bar select::after {
+  font-family: "sans-serif";
+  content: "\f0d7"; /* Downward arrow */
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  pointer-events: none;
+  font-size: 15px;
+}
+
+/* Style for the date input field in the filter bar */
+.filter-bar input[type="date"] {
+  margin: 5px;
+  font-family: "sans-serif";
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  flex: 1; /* Adjust as needed */
+  max-width: 100%;
+  font-size: 15px;
+}
+
+/* Styles for comments section */
+.comment-section {
+  display: block;
+  flex-direction: column;
+  max-width: 600px; /* Adjust as needed */
+  margin: 20px auto;
+}
+
+/* Style for individual comments */
+.comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 400px;
+  height: 70px;
+}
+
+/* Style for the username in comments */
+.user {
+  font-weight: bold;
+}
+
+/* Style for the text content in comments */
+.text {
+  margin-top: 5px;
+}
+
+/* Styles for comment section and form */
+.comment-section {
+  max-width: 600px; /* Adjust as needed */
+  margin: 20px auto;
+}
+
+.comment-form {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.comment-form label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #333; /* Text color */
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.comment-form button {
+  background-color: #918b8b; /* Button background color */
+  color: white; /* Button text color */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+  background-color: #100101; /* Change color on hover */
+}
+
+/* Styles for the save section */
+
+/* Style for the border and background of the text input area */
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+/* Style for the submit button */
+button[type="submit"] {
+  background-color: #918b8b; /* Button background color */
+  color: white; /* Button text color */
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #100101; /* Change color on hover */
+}
+
+
