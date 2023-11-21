@@ -1,0 +1,39 @@
+/**
+ * General styles for the HTML element.
+ * - Set the height to 100%.
+ */
+html {
+  height: 100%;
+}
+
+/**
+ * General styles for the body element.
+ * - Use flex display to center content horizontally and vertically.
+ * - Remove default margin.
+ */
+body {
+  display: contents;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+/**
+ * Styles for the main content container.
+ * - Center text, add padding, and set background color.
+ */
+.main-content {
+  text-align: center;
+  padding: 67px 0;
+  background-color: #f9f9f9;
+}
+
+/**
+ * Styles for the title within the main content.
+ * - Set font size, weight, and color.
+ */
+.title {
+  font-size: 90px;
+  font-weight: bold;
+  color: #100101;
+}

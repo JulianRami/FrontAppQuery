@@ -1,0 +1,26 @@
+<div class="login-container">
+  <div class="logintext">
+    <ul>
+      <li><a >Account</a><i class="fa fa-angle-down"></i>
+        <ul>
+          <li (click)="exit()"><a class="li-sub" >Sign Off</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div class="logo-container">
+      <img src="https://firebasestorage.googleapis.com/v0/b/diaznaturals-ba4b1.appspot.com/o/Logo%20cuenta.jpg?alt=media&token=904daf73-aed8-40e1-a587-204e99eca190" alt="Logo de la cuenta">
+    </div>
+  </div>
+</div>
+<div class="container22">
+  <div class="container-menu">
+    <ul>
+      <li [routerLink]="['/homePage/']"><a>Home</a></li>
+      <li [routerLink]="['/viewQuery/']"><a>View Query</a></li>
+      <li [routerLink]="['/myQueries/']"><a>My queries</a></li>
+      <li [routerLink]="['/savedQueries/']"><a>Saved Queries</a></li>
+      <li [routerLink]="['/queriesOtherUsers/']"><a>Queries Other Users</a></li>
+    </ul>
+  </div>
+</div>
+

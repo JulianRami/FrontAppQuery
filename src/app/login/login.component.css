@@ -1,0 +1,118 @@
+/**
+ * Global styles for HTML and Body elements.
+ */
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  height: max-content;
+}
+
+/**
+ * Styles for the title container.
+ */
+.title-container {
+  background-color: #316335; /* Background color */
+  text-align: center; /* Center the content */
+  padding: 20px 0; /* Add space around the content */
+  margin-top: 10%;
+}
+
+/**
+ * Styles for the title text.
+ */
+.title {
+  color: white; /* Text color in white */
+  font-family: serif; /* Serif font */
+  font-size: 24px; /* Custom font size */
+  margin: 0; /* Remove default margin for the title */
+}
+
+/**
+ * Styles for the login container logo.
+ */
+.login-container img {
+  max-width: 140px; /* Adjust the maximum logo size */
+  display: block; /* Center the logo horizontally */
+  margin: 0 auto; /* Center the logo horizontally */
+  margin-bottom: 0px; /* Add space between the logo and text */
+}
+
+/**
+ * Styles for form fields.
+ */
+.form-field {
+  display: flex; /* Change the display to flexbox */
+  flex-direction: column; /* Display elements in a column */
+  align-items: center; /* Center horizontally */
+  padding: 20px 0;
+  margin-top: 10%;
+}
+
+/**
+ * Styles for the lock icon.
+ */
+.lock {
+  color: #100101; /* Text color in white */
+  font-family: serif; /* Serif font */
+  font-size: 24px; /* Custom font size */
+  font-family: serif; /* Serif font */
+  align-self: flex-start;
+}
+
+/**
+ * Styles for form input fields.
+ */
+.form-input {
+  width: 100%; /* Optional: take up the entire available width */
+  padding: 10px; /* Internal space in the input box */
+  border: 1px solid #ccc; /* Input box border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  font-size: 17px; /* Font size */
+  color: #030303; /* Text color */
+  font-family: serif; /* Serif font */
+}
+
+/**
+ * Styles for the 'Forgot Password' link.
+ */
+.form-olvido {
+  font-family: serif; /* Serif font */
+  font-size: 24px; /* Font size */
+  color: #3e7c95; /* Text color */
+  padding: 20px 0; /* Space above and below */
+  text-align: center; /* Center the text horizontally */
+}
+
+/**
+ * Styles for custom buttons.
+ */
+.custom-button {
+  font-family: serif; /* Serif font */
+  font-size: 20px; /* Font size */
+  color: #030303; /* Black text color */
+  background-color: #6fa535; /* Green background */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Button internal space */
+  cursor: pointer; /* Change cursor on hover */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+.custom-button:hover {
+  background-color: #568a2a; /* Change background color on hover */
+}
+
+/**
+ * Styles for the button container.
+ */
+.button-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding: 20px 0; /* Space above and below */
+}

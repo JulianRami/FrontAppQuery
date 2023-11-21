@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <div class="title-container">
+    <h1 class="title">Iniciar Sesión</h1>
+  </div>
+</header>
+
+<body>
+<div class="container">
+  <div class="login-item">
+    <form action="" method="post" class="form form-login" novalidate autocomplete="off" #form="ngForm" (submit)="onSubmit()">
+      <div class="form-field">
+        <label class="lock" for="login-username"><span class="hidden">Nombre de usuario</span></label>
+        <input name="emailUser" id="login-username" #User="ngModel" [(ngModel)]="authService.formDataUser.username"
+               [class.invalid]="User.invalid && User.touched"
+               type="text" class="form-input" placeholder="Nombre de usuario" required>
+      </div>
+      <div class="button-container">
+        <input type="submit" class="custom-button" value="Ingresar">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+
+</html>
+
+
+
+
