@@ -5,7 +5,6 @@ import {
 import {AuthService} from "../auth.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
 import {QueryModel} from "./query.model";
 import {CookieService} from "ngx-cookie-service";
 
@@ -31,12 +30,11 @@ export class MyQueriesComponent implements OnInit{
   /**
    * Constructor for the QueryComponent.
    * @param {CookieService} cookies - Service for handling cookies.
-   * @param {MatDialog} dialog - Angular Material dialog service.
    * @param {ToastrService} toast - Toastr service for displaying notifications.
    * @param {AuthService} authService - Service for authentication-related functionalities.
    * @param {Router} router - Angular router service.
    */
-  constructor(private cookies: CookieService, dialog: MatDialog, private toast: ToastrService, public authService: AuthService, public router: Router) {
+  constructor(private cookies: CookieService, private toast: ToastrService, public authService: AuthService, public router: Router) {
     this.cookies.set('idQuery', "-1");
     this.authService.formDataQuery = new QueryModel();
   }

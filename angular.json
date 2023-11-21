@@ -59,6 +59,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 9000
+          },
           "configurations": {
             "production": {
               "browserTarget": "FrontAppQuery:build:production"
