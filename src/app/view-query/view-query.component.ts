@@ -244,7 +244,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -260,7 +265,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -276,7 +286,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -292,7 +307,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -308,7 +328,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -324,7 +349,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
@@ -339,7 +369,12 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        this.toast.error(error,"Error")
+        if (error.error instanceof ErrorEvent) {
+          this.toast.error('An error occurred:', 'Query not created');
+        } else {
+          this.toast.error(error.error.message, 'Query not created');
+          console.error(`Error status: ${error.status}, error message: ${error.error.message}`);
+        }
       }
     );
   }
