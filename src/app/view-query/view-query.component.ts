@@ -137,6 +137,9 @@ export class ViewQueryComponent implements OnInit{
     if (this.idQuery !== -1) {
       this.showAddCommentSection = true;
       this.showAddQuerySection = false;
+    }else {
+      this.showAddCommentSection = false;
+      this.showAddQuerySection = true;
     }
   }
 
@@ -336,7 +339,7 @@ export class ViewQueryComponent implements OnInit{
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error loading data:', error);
+        this.toast.error(error,"Error")
       }
     );
   }
@@ -446,27 +449,59 @@ export class ViewQueryComponent implements OnInit{
    * Displays success or error messages based on the result.
    */
   saveQuery(): void {
-    const query: QueryModel = new QueryModel();
-    query.queryName = this.nameQuery;
-    const selectedDate = new Date(this.selectedDate);
-    selectedDate.setDate(selectedDate.getDate() + 1);
-    query.date = selectedDate;
-    query.description = this.commentSave;
-    query.searchTerm = this.searchTerm;
-    query.country = this.selectedCountry;
-    query.recordCount = this.selectedNumber;
-    query.user = this.cookies.get("name");
-    this.authService.postQuery(query).subscribe(
-      () => {
-        this.toast.success("Query Added Successfully", "Query added");
-        this.cookies.set('idQuery', "-1");
-        this.resetComponent();
-        this.ngOnInit();
-      },
-      () => {
-        this.toast.error("Couldn't add query", "Query not added");
+    if(this.validateFormSaved()) {
+      if(this.validateFormDates()) {
+        const query: QueryModel = new QueryModel();
+        query.queryName = this.nameQuery;
+        const selectedDate = new Date(this.selectedDate);
+        selectedDate.setDate(selectedDate.getDate() + 1);
+        query.date = selectedDate;
+        query.description = this.commentSave;
+        query.searchTerm = this.searchTerm;
+        query.country = this.selectedCountry;
+        query.recordCount = this.selectedNumber;
+        query.user = this.cookies.get("name");
+        this.authService.postQuery(query).subscribe(
+          () => {
+            this.toast.success("Query Added Successfully", "Query added");
+            this.cookies.set('idQuery', "-1");
+            this.resetComponent();
+            this.ngOnInit();
+          },
+          () => {
+            this.toast.error("Couldn't add query", "Query not added");
+          }
+        );
       }
-    );
+    }
+  }
+
+  /**
+   * Validates the form for saving queries.
+   * Checks if the query name and description are filled.
+   *
+   * @returns {boolean} True if validation is successful, false otherwise.
+   */
+  private validateFormSaved(): boolean {
+    if (!this.nameQuery || !this.commentSave) {
+      this.toast.warning("Please fill in query name and description", "Validation Error");
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * Validates the form for date-based queries.
+   * Checks if the search term, selected country, and selected number are provided.
+   *
+   * @returns {boolean} True if validation is successful, false otherwise.
+   */
+  private validateFormDates(): boolean {
+    if (!this.searchTerm || !this.selectedCountry || !this.selectedNumber) {
+      this.toast.warning("Please make a query", "Validation Error");
+      return false;
+    }
+    return true;
   }
 
   /**
