@@ -119,45 +119,65 @@ export class ViewQueryComponent implements OnInit{
     private sharedGraphicScoreTermService: SharedGraphicScoreTermService
   ) {}
 
+  /**
+   * Initializes the component by configuring section visibility and loading necessary data.
+   */
   ngOnInit() {
-    this.showSecctionsCorrects();
+    this.showSectionsCorrectly();
     this.loadQuery();
     this.loadComments();
     this.loadListCountries();
   }
 
-  private showSecctionsCorrects(){
+  /**
+   * Controls the visibility of sections based on the existence of a query ID.
+   * If a query ID is present, the comment section is shown, and the query section is hidden.
+   */
+  private showSectionsCorrectly(): void {
     if (this.idQuery !== -1) {
       this.showAddCommentSection = true;
       this.showAddQuerySection = false;
     }
   }
 
-  private loadComments() {
+  /**
+   * Loads comments associated with the current query from the server.
+   */
+  private loadComments(): void {
     if (this.idQuery !== -1) {
-      this.authService.getComments(this.idQuery).subscribe((data) => {
+      this.authService.getComments(this.idQuery).subscribe(
+        (data) => {
           this.comments = data;
         },
         () => {
-          console.log("Error cargando comments");
+          console.error("Error loading comments");
         }
       );
     }
   }
 
-  private loadListCountries(){
-    this.authService.getCountries().subscribe((data)=>{
+  /**
+   * Fetches the list of countries from the server and assigns it to the component property.
+   */
+  private loadListCountries(): void {
+    this.authService.getCountries().subscribe(
+      (data) => {
         this.countries = data;
       },
-      ()=>{
-        console.log("Error cargando paises");
+      () => {
+        console.error("Error loading countries");
       }
     );
-}
+  }
 
-  private loadQuery(){
+  /**
+   * Loads details of the current query from the server and updates component properties accordingly.
+   * If a query ID is present, applies the search based on the retrieved query details.
+   */
+  private loadQuery(): void {
     if (this.idQuery !== -1) {
-      this.authService.getQuery(this.idQuery).subscribe((data) => {
+      this.authService.getQuery(this.idQuery).subscribe(
+        (data) => {
           this.searchTerm = data.searchTerm;
           this.selectedCountry = data.country;
           this.selectedNumber = data.recordCount;
@@ -165,127 +185,167 @@ export class ViewQueryComponent implements OnInit{
           this.applySearch();
         },
         () => {
-          console.log("Error cargando consulta");
+          console.error("Error loading query");
         }
       );
     }
   }
 
+  /**
+   * Formats a raw date string into the desired 'YYYY-MM-DD' format.
+   * @param rawDate - The raw date string to be formatted.
+   * @returns The formatted date string.
+   */
   private formatDate(rawDate: string): string {
     const dateObject = new Date(rawDate);
     const year = dateObject.getFullYear();
-    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Ajusta el mes a dos dígitos
-    const day = dateObject.getDate().toString().padStart(2, '0'); // Ajusta el día a dos dígitos
-    const formattedDate = `${year}-${month}-${day}`;
-    return formattedDate;
+    const month = (dateObject.getMonth() + 1).toString().padStart(2, '0');
+    const day = dateObject.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
-
-  applySearch() {
-    if(this.isValidSearch()){
-      if(this.selectedCountry !== "Select a country" && this.selectedDate == "" && this.searchTerm == ""){
+  /**
+   * Applies the search based on the selected criteria (country, date, and term).
+   * Invokes specific methods to load data according to the selected search parameters.
+   * Displays a notification if the search is not valid.
+   */
+  applySearch(): void {
+    if (this.isValidSearch()) {
+      if (this.selectedCountry !== "Select a country" && this.selectedDate == "" && this.searchTerm == "") {
         this.loadDatesForCountry();
-      }else if(this.selectedCountry !== "Select a country" && this.selectedDate !== "" && this.searchTerm == ""){
+      } else if (this.selectedCountry !== "Select a country" && this.selectedDate !== "" && this.searchTerm == "") {
         this.loadDatesForCountryDate();
-      }else if(this.selectedCountry !== "Select a country" && this.searchTerm !== "" && this.selectedDate == ""){
+      } else if (this.selectedCountry !== "Select a country" && this.searchTerm !== "" && this.selectedDate == "") {
         this.loadDatesForCountryTerm();
-      }else if(this.selectedDate !== "" && this.searchTerm == "" && this.selectedCountry == "Select a country"){
+      } else if (this.selectedDate !== "" && this.searchTerm == "" && this.selectedCountry == "Select a country") {
         this.loadDatesForDate();
-      }else if(this.searchTerm !== "" && this.selectedDate == "" && this.selectedCountry == "Select a country"){
+      } else if (this.searchTerm !== "" && this.selectedDate == "" && this.selectedCountry == "Select a country") {
         this.loadDatesForTerm();
-      }else if(this.selectedDate !== "" && this.searchTerm !== "" && this.selectedCountry == "Select a country"){
+      } else if (this.selectedDate !== "" && this.searchTerm !== "" && this.selectedCountry == "Select a country") {
         this.loadDatesForDateTerm();
-      }else{
+      } else {
         this.loadDatesForAllFields();
       }
-    }else{
-      this.toast.info("Please enter a record number","Number of records");
+    } else {
+      this.toast.info("Please enter a record number", "Number of records");
     }
   }
 
-  private loadDatesForDateTerm() {
+  /**
+   * Loads data for the combination of term and date from the server.
+   * @private
+   */
+  private loadDatesForDateTerm(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForTermDate(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
-  private loadDatesForTerm() {
+  /**
+   * Loads data for the selected term from the server.
+   * @private
+   */
+  private loadDatesForTerm(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForTerm(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
-  private loadDatesForDate() {
+  /**
+   * Loads data for the selected date from the server.
+   * @private
+   */
+  private loadDatesForDate(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForDate(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
-  private loadDatesForCountry() {
+  /**
+   * Loads data for the selected country from the server.
+   * @private
+   */
+  private loadDatesForCountry(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForCountry(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
-  private loadDatesForCountryDate() {
+  /**
+   * Loads data for the combination of country and date from the server.
+   * @private
+   */
+  private loadDatesForCountryDate(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForCountryDate(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
-  private loadDatesForCountryTerm() {
+  /**
+   * Loads data for the combination of country and term from the server.
+   * @private
+   */
+  private loadDatesForCountryTerm(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForCountryTerm(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
-
-  loadDatesForAllFields() {
+  /**
+   * Loads data for all selected fields from the server based on the search criteria.
+   * Invokes the necessary transformations and updates the corresponding components with the loaded data.
+   */
+  loadDatesForAllFields(): void {
     const searchData = this.createSearchData();
     this.authService.getDataForAllFields(searchData).subscribe(
       (response: any[]) => {
         this.transformAndLoadData(response);
       },
       (error) => {
-        console.error('Error al cargar datos:', error);
+        console.error('Error loading data:', error);
       }
     );
   }
 
+  /**
+   * Creates a SearchDataModel object with the current selected search parameters.
+   * @returns A SearchDataModel object containing search criteria.
+   * @private
+   */
   private createSearchData(): SearchDataModel {
     return {
       date: this.selectedDate,
@@ -295,6 +355,12 @@ export class ViewQueryComponent implements OnInit{
     };
   }
 
+  /**
+   * Transforms the raw data into a format suitable for loading into components.
+   * Loads the transformed data into the corresponding components.
+   * @param response - Raw data from the server.
+   * @private
+   */
   private transformAndLoadData(response: any[]): void {
     const scoreData = this.transformData(response, 'score');
     this.sharedGraphicScoreTermService.loadDatesForAllFields(scoreData);
@@ -306,6 +372,13 @@ export class ViewQueryComponent implements OnInit{
     this.dataSetFour = this.transformAndLoadDataSet(response, 'date', 'score');
   }
 
+  /**
+   * Transforms raw data into a format suitable for loading into components.
+   * @param response - Raw data from the server.
+   * @param valueType - Type of value to extract from the data.
+   * @returns Transformed data.
+   * @private
+   */
   private transformData(response: any[], valueType: string): any[] {
     return response.map(item => ({
       name: item.searchTerm,
@@ -313,6 +386,14 @@ export class ViewQueryComponent implements OnInit{
     }));
   }
 
+  /**
+   * Transforms and loads dataset based on keyStart and keyEnd.
+   * @param response - Raw data from the server.
+   * @param keyStart - Starting key for data extraction.
+   * @param keyEnd - Ending key for data extraction.
+   * @returns Transformed dataset.
+   * @private
+   */
   private transformAndLoadDataSet(response: any[], keyStart: string, keyEnd: string): any {
     let dataSet = response.map(item => ({
       name: item.searchTerm,
@@ -326,36 +407,46 @@ export class ViewQueryComponent implements OnInit{
     return dataSet;
   }
 
-  private isValidSearch(){
-    if(this.selectedNumber !== 0 && (this.searchTerm !== undefined || this.selectedDate !== ""
-      || this.selectedCountry !== "Select a country")){
-      return true;
-    }
-    return false;
+  /**
+   * Checks if the current search is valid.
+   * @returns True if the search is valid, false otherwise.
+   * @private
+   */
+  private isValidSearch(): boolean {
+    return this.selectedNumber !== 0 && (this.searchTerm !== undefined || this.selectedDate !== "" || this.selectedCountry !== "Select a country");
   }
 
-  addComment() {
-    if(this.commentSend !== ""){
+  /**
+   * Adds a comment to the current query.
+   * Displays success or error messages based on the result.
+   */
+  addComment(): void {
+    if (this.commentSend !== "") {
       const comment: CommentsModel = new CommentsModel();
       comment.commentText = this.commentSend;
       comment.queryId = Number.parseInt(this.cookies.get("idQuery"));
       comment.user = this.cookies.get("name");
-      this.authService.postComment(comment).subscribe(()=>{
-          this.toast.success("Comment Added Successfully","Comment added");
+      this.authService.postComment(comment).subscribe(
+        () => {
+          this.toast.success("Comment Added Successfully", "Comment added");
           this.commentSend = "";
           this.loadComments();
         },
-        ()=>{
-          this.toast.info("Couldn't add comment","Comment not added");
+        () => {
+          this.toast.info("Couldn't add comment", "Comment not added");
         }
       );
-    }else {
-      this.toast.info("Please enter a comment","Enter Comment");
+    } else {
+      this.toast.info("Please enter a comment", "Enter Comment");
     }
   }
 
-  saveQuery() {
-    const query:QueryModel = new QueryModel();
+  /**
+   * Saves the current query with the provided information.
+   * Displays success or error messages based on the result.
+   */
+  saveQuery(): void {
+    const query: QueryModel = new QueryModel();
     query.queryName = this.nameQuery;
     const selectedDate = new Date(this.selectedDate);
     selectedDate.setDate(selectedDate.getDate() + 1);
@@ -365,19 +456,23 @@ export class ViewQueryComponent implements OnInit{
     query.country = this.selectedCountry;
     query.recordCount = this.selectedNumber;
     query.user = this.cookies.get("name");
-    this.authService.postQuery(query).subscribe(()=>{
-        this.toast.success("Query Added Successfully","Query added");
+    this.authService.postQuery(query).subscribe(
+      () => {
+        this.toast.success("Query Added Successfully", "Query added");
         this.cookies.set('idQuery', "-1");
         this.resetComponent();
         this.ngOnInit();
       },
-      ()=>{
-        this.toast.error("Couldn't add query","Query not added");
+      () => {
+        this.toast.error("Couldn't add query", "Query not added");
       }
     );
-
   }
 
+  /**
+   * Resets the component to its initial state.
+   * Clears input fields and resets datasets.
+   */
   resetComponent(): void {
     this.selectedNumber = 0;
     this.searchTerm = '';
@@ -389,7 +484,8 @@ export class ViewQueryComponent implements OnInit{
     this.dataSetOne = [];
     this.nameQuery = "";
     this.commentSave = "";
-    this.sharedGraphicScoreTermService.loadDatesForAllFields([])
+    this.sharedGraphicScoreTermService.loadDatesForAllFields([]);
     this.sharedGraphicService.loadDatesForAllFields([]);
   }
+
 }

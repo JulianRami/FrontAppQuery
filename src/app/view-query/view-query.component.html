@@ -87,10 +87,9 @@
     </div>
 
     <div class="comment-form">
-      <label class="user" for="comment">Haz un comentario:</label>
-      <textarea class="text" id="comment" placeholder="Escribe tu comentario" [(ngModel)]="commentSend"></textarea>
-
-      <button (click)="addComment()">Agregar Comentario</button>
+      <label class="user" for="comment">Make a Comment:</label>
+      <textarea class="text" id="comment" placeholder="Write your comment" [(ngModel)]="commentSend"></textarea>
+      <button (click)="addComment()">Add Comment</button>
     </div>
   </div>
 </div>
@@ -104,7 +103,7 @@
       <label for="comment">Comment:</label>
       <textarea id="commentt" [(ngModel)]="commentSave"></textarea>
 
-      <button (click)="saveQuery()" type="submit">Guardar Consulta</button>
+      <button (click)="saveQuery()" type="submit">Save Query</button>
 
   </div>
 </div>

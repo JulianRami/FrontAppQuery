@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {UserModel} from "./login/user.model";
 import {HttpClient} from "@angular/common/http";
-import {CookieService} from "ngx-cookie-service";
 import {QueryModel} from "./my-queries/query.model";
 import {CommentsModel} from "./view-query/comments.model";
 import {SearchDataModel} from "./view-query/search-data.model";
@@ -16,7 +15,7 @@ export class AuthService {
   formDataUser: UserModel = new UserModel();
   formDataQuery: QueryModel = new QueryModel();
 
-  constructor(private http: HttpClient, public cookiesService: CookieService) {
+  constructor(private http: HttpClient) {
   }
 
   postUser(formDataUser: UserModel) {
