@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {UserModel} from "./login/user.model";
+import {UserModel} from "../login/user.model";
 import {HttpClient} from "@angular/common/http";
-import {QueryModel} from "./my-queries/query.model";
-import {CommentsModel} from "./view-query/comments.model";
-import {SearchDataModel} from "./view-query/search-data.model";
-import {QuerySavedModel} from "./users-queries/query-saved.model";
+import {QueryModel} from "../my-queries/query.model";
+import {CommentsModel} from "../view-query/comments.model";
+import {SearchDataModel} from "../view-query/search-data.model";
+import {QuerySavedModel} from "../users-queries/query-saved.model";
 
 @Injectable({
   providedIn: 'root'

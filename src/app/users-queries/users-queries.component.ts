@@ -3,7 +3,7 @@ import {
   Input,
   OnInit
 } from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthService} from "../service-api/auth.service";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 import {QueryModel} from "../my-queries/query.model";

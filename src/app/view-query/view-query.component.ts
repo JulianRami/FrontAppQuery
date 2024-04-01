@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthService} from "../service-api/auth.service";
 import {SearchDataModel} from "./search-data.model";
 import {SharedGraphicRankTermService} from "./services/SharedGraphicRankTermService";
 import {SharedGraphicScoreTermService} from "./services/SharedGraphicScoreTermService";

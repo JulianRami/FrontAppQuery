@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Color} from '@swimlane/ngx-charts';
-import {AuthService} from "../../../auth.service";
+import {AuthService} from "../../../service-api/auth.service";
 import {SharedGraphicScoreTermService} from "../../services/SharedGraphicScoreTermService";
 
 /**

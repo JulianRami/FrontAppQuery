@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthService} from "../service-api/auth.service";
 import {Router} from "@angular/router";
 import {CookieService} from "ngx-cookie-service";
 

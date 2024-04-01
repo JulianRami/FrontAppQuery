@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Color} from '@swimlane/ngx-charts';
-import {AuthService} from "../../../auth.service";
+import {AuthService} from "../../../service-api/auth.service";
 import {SharedGraphicRankTermService} from "../../services/SharedGraphicRankTermService";
 /**
  * Component for displaying a horizontal bar chart with term rankings using ngx-charts library.

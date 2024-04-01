@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Color} from '@swimlane/ngx-charts';
-import {AuthService} from "../../../auth.service";
+import {AuthService} from "../../../service-api/auth.service";
 /**
  * Component for displaying a bar chart with country-term rankings using ngx-charts library.
  * It takes input data in a multi-series format and provides various customization options.
