@@ -1,10 +1,12 @@
 # FrontAppQuery
 
+In this project, new users must be created every time the application is entered, otherwise the corresponding message will appear. Once inside, requests can be made to bigQuery through filters and the data found on the trends of said search will be graphed. You can save queries, see queries from other users and comment.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It is important to check the file \src\environment\environment.ts and configure the address of the API to which you are going to connect to work.
+Run `ng serve` for a dev server. Navigate to `http://localhost:9000/`. The application will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
