@@ -5,6 +5,7 @@ import {QueryModel} from "../my-queries/query.model";
 import {CommentsModel} from "../view-query/comments.model";
 import {SearchDataModel} from "../view-query/search-data.model";
 import {QuerySavedModel} from "../users-queries/query-saved.model";
+import {environment} from "../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class AuthService {
    * The base URL for the API of backEnd.
    * @private
    */
-  private apiUrl = 'http://localhost:8080/api';
+  private apiUrl = environment.apiUrl;
   formDataUser: UserModel = new UserModel();
   formDataQuery: QueryModel = new QueryModel();
 
